@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+    run-tests:
+      docker:
+        - image: circleci/node:latest
+      steps:
+        - checkout
+        - run:
+            name: Login to Org
+            comand: . build/login_to_sandbox.sh
+workflows:
+  version: 2
+  validate:
+    jobs:
+      - run-tests
