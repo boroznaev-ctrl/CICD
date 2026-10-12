@@ -5,7 +5,9 @@ jobs:
         - image: cimg/base
       steps:
         - checkout
-        - sf/install
+        - run:
+            name: Inslall Dependecies
+            command: . build/install_dependencies.sh
         - run:
             name: Login to Org
             command: . build/login_to_sandbox.sh
