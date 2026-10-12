@@ -7,4 +7,5 @@ jobs:
         - checkout
         - run:
             name: Login to Org
-            comand: . build/login_to_sandbox.sh
+            command: . build/login_to_sandbox.sh
+
