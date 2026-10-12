@@ -1,2 +1,2 @@
 echo "Installing Salasforce CLI"
-npm install -global sf-cli
+npm install @salesforce/cli --global
