@@ -8,4 +8,8 @@ jobs:
         - run:
             name: Login to Org
             command: . build/login_to_sandbox.sh
-
+workflows:
+  version: 2.1
+  validate:
+    jobs:
+      - run-tests
