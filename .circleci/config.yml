@@ -1,13 +1,22 @@
 version: 2.1
+
+orbs:
+  salesforce: circleci/salesforce-sfdx@2.153 
+
 jobs:
     run-tests:
       docker:
         - image: cimg/base
       steps:
         - checkout
-        - salesforce/install
+        - salesforce/install     # This ensures the 'sf' CLI binary is installed and mapped
         - run:
-            name: Inslall Dependecies
+          name: Run Salesforce Commands
+          command:
+            sf version
+            sf auth list
+        - run:
+            name: Install Dependecies
             command: . build/install_dependencies.sh
         - run:
             name: Login to Org
