@@ -5,6 +5,7 @@ jobs:
         - image: cimg/base
       steps:
         - checkout
+        - salesforce/install
         - run:
             name: Inslall Dependecies
             command: . build/install_dependencies.sh
