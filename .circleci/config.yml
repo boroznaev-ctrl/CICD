@@ -1,16 +1,17 @@
 version: 2.1
-
 orbs:
-  salesforce: circleci/salesforce-sfdx@2.153 
-
+  salesforce: circleci/salesforce-sfdx@3.0.3
 jobs:
-    run-tests:
-      docker:
-        - image: cimg/base
-
-
+  build_and_test: # this can be any name you choose
+    executor: salesforce/default # use the default executor defined within the orb
+    steps:
+      - checkout # checkout source code
+      - salesforce/install:
+        version: "2.153.0" 
+      - run:
+          name: Log in
+          command: . build/login_to_sandbox.sh
 workflows:
-  version: 2.1
-  validate:
+  build_test_deploy:
     jobs:
-      - run-tests
+      - build_and_test
